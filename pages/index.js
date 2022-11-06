@@ -35,16 +35,16 @@ export default function Home() {
         {isLoading ? (
           <Skeleton />
         ):
-        (
-          <>
-            {categories && categories.length > 0 && (
-              <ProductGrid 
-                showLink={true}
-                categories={categories}
-              />
-            )}
-          </>
-        )
+          (
+            <>
+              {categories && categories.length > 0 && (
+                <ProductGrid 
+                  showLink={true}
+                  categories={categories}
+                />
+              )}
+            </>
+          )
         }
       </main>
     </div>
