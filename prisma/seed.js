@@ -1,10 +1,10 @@
-import {
+const {
   randBetweenDate,
   randNumber,
   randProduct,
   randProductAdjective,
-} from '@ngneat/falso';
-import { PrismaClient } from '@prisma/client';
+} = require('@ngneat/falso');
+const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
 
@@ -20,7 +20,7 @@ const main = async () => {
       const productAdjective = randProductAdjective();
       await prisma.product.upsert({
         where: {
-          title: `${productAdjective} ${productTitle}`
+          title: `${productAdjective} ${product.title}`
         },
         create: {
           title: `${productAdjective} ${product.title}`,
