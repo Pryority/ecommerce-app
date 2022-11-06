@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prisma": {
+      "seed": "node --compiler-options {\"module\":\"CommonJS\" prisma/seed.ts"
+    }
   },
   "dependencies": {
     "@heroicons/react": "^2.0.13",
