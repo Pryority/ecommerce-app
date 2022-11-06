@@ -11,6 +11,7 @@ const getCategories = async (req, res) => {
           orderBy: {
             createdAt: 'desc',
           },
+          // only take the latest eight categories
           take: 8,
           select: {
             title: true,
@@ -33,6 +34,7 @@ const getCategories = async (req, res) => {
   }
 };
 
+// Using the next-connect library we are making sure that only the get operation is allowed for the getCategories function
 const handler = nc({ attachParams: true }).get(getCategories);
 
 export default handler;
