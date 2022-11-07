@@ -1,3 +1,4 @@
+import { ShoppingCartIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -6,7 +7,7 @@ const Navbar = () => {
     { tabName: 'HOME', pageName: '/create-proposal' },
     { tabName: 'ABOUT', pageName: '/proposals' },
     { tabName: 'PARTNERS', pageName: '/SelectId' },
-    { tabName: 'CONTACT', pageName: '/' },
+    { tabName: 'CART', pageName: '/' },
   ];
   const pathname  = useRouter();
   return(
@@ -14,12 +15,13 @@ const Navbar = () => {
       <div className='grid grid-cols-2 md:grid-cols-4 w-full items-center justify-center p-4'>
         {menus.map((tab)=>(
           <Link href={tab.pageName} key={tab.tabName}>
-            <div className='flex justify-center items-center'>
+            <div className={`flex justify-center items-center ${tab.tabName != 'CART' && 'hover:bg-gradient-to-b hover:from-green-400  hover:bg-[length:50%_2px] hover:bg-no-repeat hover:bg-bottom'}  ${tab.tabName === 'CART' && 'bg-green-600 space-x-2 py-1 mx-8 items-center justify-center text-white border border-[#1e1e1e]/50 hover:bg-green-500 hover:scale-[1.024] transition ease-in-and-out duration-100 hover:text-green-900 rounded-md'} ${pathname === tab.pageName && tab.tabName != 'CART' ? 'justify-center flex text-center bg-gradient-to-b from-black/80 bg-[length:50%_2px] bg-no-repeat bg-bottom' : 'justify-center flex text-center '}`}>
               <h2
-                className={`font-semibold px-4 py-1 items-center cursor-pointer ${tab.tabName != 'CONTACT' && 'hover:bg-gradient-to-b hover:from-yellow-400  hover:bg-[length:50%_2px] hover:bg-no-repeat hover:bg-bottom'}  ${tab.tabName === 'CONTACT' && 'bg-yellow-600  text-white border border-[#1e1e1e]/50 hover:bg-yellow-400 hover:scale-105 transition ease-in-and-out duration-100 hover:text-zinc-900 rounded-full'} ${pathname === tab.pageName && tab.tabName != 'CONTACT' ? 'justify-center flex text-center bg-gradient-to-b from-black/80 bg-[length:50%_2px] bg-no-repeat bg-bottom' : 'justify-center flex text-center '} `}
+                className={'font-semibold items-center cursor-pointer'}
               >
                 {tab.tabName}
               </h2>
+              <ShoppingCartIcon className={`${tab.tabName != 'CART' && 'hidden'} h-6 w-6`}/>
             </div>
           </Link>
         ))}

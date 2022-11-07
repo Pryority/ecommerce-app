@@ -46,10 +46,12 @@ export default function Home() {
               <div className='col-span-3 flex flex-col h-full w-full'>
                 <CategoryPanel categories={categories}/>
               </div>
-              <div className='flex flex-col col-span-5 w-full h-full bg-yellow-400 border-4'>
+              <div className='flex flex-col col-span-5 w-full h-full p-4'>
                 <div className='flex flex-col w-full min-h-screen relative'>
-                  <div className='flex flex-col p-4 absolute'>
-                    <h1>test</h1>
+                  <div className='flex flex-col p-4 w-full h-full absolute bg-green-600/10 border-2 border-green-700/20'>
+                    <div className='flex flex-col h-full w-full'>
+                      <h1>test</h1>
+                    </div>
                   </div>
                 </div>
               </div>

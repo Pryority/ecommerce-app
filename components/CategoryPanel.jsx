@@ -5,7 +5,7 @@ const CategoryPanel = ({categories}) => {
     <div className='flex flex-col relative'>
       {categories ? 
         (
-          <div className='flex flex-col p-4 absolute top-0 left-0'>
+          <div className='flex flex-col p-4 absolute top-0 left-0 mx-auto'>
             {categories.map((category, i) => (
               <div 
                 key={i}
