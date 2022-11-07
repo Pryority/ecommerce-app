@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
-import ProductGrid from '../components/ProductGrid';
+// import ProductGrid from '../components/ProductGrid';
 import CategoryPanel from '../components/CategoryPanel';
 
 export default function Home() {
