@@ -1,22 +1,27 @@
 import { useQuery } from '@tanstack/react-query';
-// import Navbar from "../components/Navbar";
-// import ProductGrid from "../components/ProductGrid";
-// import Skeleton from "../components/Skeleton";
 import Head from 'next/head';
+import Navbar from '../components/Navbar';
+import ProductGrid from '../components/ProductGrid';
 
 export default function Home() {
-  const getAllCategories = async() => {
+  const getAllCategories = async () => {
     try {
-      const responseJSON = await fetch('/api/categories');
-      const response = await responseJSON.json();
-      return response;
+      // fetching the data from the /api/categories
+      const response = await fetch('/api/categories');
+      if (!response.ok) {
+        const message = `An error has occured: ${response.status}`;
+        throw new Error(message);
+      }
+      const responseJSON = await response.json();
+      return responseJSON;
     } catch (error) {
       throw error;
     }
   };
 
-  const [isLoading, data] = useQuery(
-    ['AllCategoriesWithProducts'],
+  // We are using useQuery to cache this data with the key AllCategoriesWithProducts
+  const { isLoading, data } = useQuery(
+    ['AllCategoreiesWithProducts'],
     getAllCategories
   );
 
@@ -30,20 +35,35 @@ export default function Home() {
           <div className='py-2 px-5 bg-green-600 rounded text-white'>All Products</div>
         </div>
       </Head>
-      <main className='container mx-auto bg-blue-200'>
-        {/* <Navbar /> */}
+      <main className='container min-h-screen mx-auto'>
+        <Navbar />
         {isLoading ? (
-          <Skeleton />
+          <>
+            {/* <Skeleton /> */}
+            <h1 className='text-4xl'>{isLoading}</h1>
+          </>
         ):
           (
-            <>
-              {categories && categories.length > 0 && (
-                <ProductGrid 
-                  showLink={true}
-                  categories={categories}
-                />
-              )}
-            </>
+            <div className='container min-h-screen w-full'>
+              {categories ? 
+                (
+                  <>
+                    {categories.map((category, i) => (
+                      <div key={i}>
+                        <h1 className='text-black'>{category.name}</h1>
+                      </div>
+                    ))
+                    }
+                  </>
+                )
+                :
+                (
+                  <div className='py-2 px-4 rounded-md text-white bg-red-600'>
+                    <h1>There are no categories in the database!</h1>
+                  </div>
+                )
+              }
+            </div>
           )
         }
       </main>
