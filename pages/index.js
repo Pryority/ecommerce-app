@@ -34,7 +34,7 @@ export default function Home() {
         <meta name="description" content="All Products" />
         <Navbar/>
       </Head>
-      <main className='flex flex-col min-h-screen mx-auto'>
+      <main className='flex flex-col min-h-screen w-full'>
         {isLoading ? (
           <>
             {/* <Skeleton /> */}
@@ -42,12 +42,16 @@ export default function Home() {
           </>
         ):
           (
-            <div className='grid grid-cols-8 w-full'>
-              <div className='col-span-3 flex flex-col w-full'>
+            <div className='grid grid-cols-8 w-full h-full'>
+              <div className='col-span-3 flex flex-col h-full w-full'>
                 <CategoryPanel categories={categories}/>
               </div>
-              <div className='flex flex-col w-full'>
-                <h1>test</h1>
+              <div className='flex flex-col col-span-5 w-full h-full bg-yellow-400 border-4'>
+                <div className='flex flex-col w-full min-h-screen relative'>
+                  <div className='flex flex-col p-4 absolute'>
+                    <h1>test</h1>
+                  </div>
+                </div>
               </div>
             </div>
           )

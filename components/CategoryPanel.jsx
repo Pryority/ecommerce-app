@@ -2,10 +2,10 @@ import React from 'react';
 
 const CategoryPanel = ({categories}) => {
   return (
-    <div className='flex flex-col min-h-screen w-screen relative'>
+    <div className='flex flex-col relative'>
       {categories ? 
         (
-          <div className='flex flex-col p-4  absolute'>
+          <div className='flex flex-col p-4 absolute top-0 left-0'>
             {categories.map((category, i) => (
               <div 
                 key={i}
