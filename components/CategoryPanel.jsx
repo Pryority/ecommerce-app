@@ -11,7 +11,7 @@ const CategoryPanel = ({categories}) => {
                 key={i}
                 className='p-[3.34px] hover:p-[4.25] hover:bg-green-600/10 hover:pr-8'
               >
-                <h1 className='text-green-900 cursor-pointer transition-all ease-in-out hover:scale-105 duration-75 hover:pl-8 hover:font-medium p-2 w-full hover:uppercase'>{category.name}</h1>
+                <h3 className='text-green-900 cursor-pointer transition-all text-sm ease-in-out hover:scale-105 duration-75 hover:pl-8 hover:font-medium p-2 w-full hover:uppercase'>{category.name}</h3>
               </div>
             ))
             }

@@ -43,18 +43,34 @@ export default function Home() {
         ):
           (
             <div className='grid grid-cols-8 w-full h-full'>
-              <div className='col-span-3 flex flex-col h-full w-full'>
+              <section className='col-span-3 flex flex-col h-full w-full'>
                 <CategoryPanel categories={categories}/>
-              </div>
-              <div className='flex flex-col col-span-5 w-full h-full p-4'>
+              </section>
+              {/* PRODUCTS PANEL */}
+              <section className='flex flex-col col-span-5 w-full h-full p-4'>
                 <div className='flex flex-col w-full min-h-screen relative'>
-                  <div className='flex flex-col p-4 w-full h-full absolute bg-green-600/10 border-2 border-green-700/20'>
-                    <div className='flex flex-col h-full w-full'>
-                      <h1>test</h1>
+                  <div className='flex flex-col p-2 w-full h-full absolute items-center bg-green-600/10 border-2 border-green-700/20'>
+                    <div className='grid grid-cols-2 justify-center items-center w-full'>
+                      <div className='flex p-2 justify-center'>
+                        <div className='flex flex-col h-64 w-64 bg-black/20 relative rounded'>
+                          <div className='absolute bottom-2 left-2 flex flex-col space-y-2'>
+                            <h3 className='text-[18px] font-light uppercase'>Title</h3>
+                            <p>Price</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className='flex p-2 justify-center'>
+                        <div className='flex flex-col h-64 w-64 bg-black/20 relative rounded'>
+                          <div className='absolute bottom-2 left-2 flex flex-col space-y-2'>
+                            <h3 className='text-[18px] font-light uppercase'>Title</h3>
+                            <p>Price</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </section>
             </div>
           )
         }
