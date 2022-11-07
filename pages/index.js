@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import ProductGrid from '../components/ProductGrid';
+import CategoryPanel from '../components/CategoryPanel';
 
 export default function Home() {
   const getAllCategories = async () => {
@@ -28,15 +29,12 @@ export default function Home() {
   const categories = data?.categories;
 
   return (
-    <div className='flex flex-col min-h-screen w-full items-center justify-center'>
+    <div className='flex flex-col min-h-screen w-full items-center justify-center bg-gradient-to-b from-transparent to-green-100/10'>
       <Head>
         <meta name="description" content="All Products" />
-        <div className='flex flex-col w-full items-center justify-center p-4'>
-          <div className='py-2 px-5 bg-green-600 rounded text-white'>All Products</div>
-        </div>
+        <Navbar/>
       </Head>
-      <main className='container min-h-screen mx-auto'>
-        <Navbar />
+      <main className='flex flex-col min-h-screen mx-auto'>
         {isLoading ? (
           <>
             {/* <Skeleton /> */}
@@ -44,25 +42,13 @@ export default function Home() {
           </>
         ):
           (
-            <div className='container min-h-screen w-full'>
-              {categories ? 
-                (
-                  <>
-                    {categories.map((category, i) => (
-                      <div key={i}>
-                        <h1 className='text-black'>{category.name}</h1>
-                      </div>
-                    ))
-                    }
-                  </>
-                )
-                :
-                (
-                  <div className='py-2 px-4 rounded-md text-white bg-red-600'>
-                    <h1>There are no categories in the database!</h1>
-                  </div>
-                )
-              }
+            <div className='grid grid-cols-8 w-full'>
+              <div className='col-span-3 flex flex-col w-full'>
+                <CategoryPanel categories={categories}/>
+              </div>
+              <div className='flex flex-col w-full'>
+                <h1>test</h1>
+              </div>
             </div>
           )
         }
